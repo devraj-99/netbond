@@ -1,6 +1,5 @@
 package com.netmax.netbond.dl
 
-import com.netmax.netbond.net.BoundNetwork
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
@@ -32,7 +31,7 @@ object ChunkFetcher {
      */
     fun open(
         url: URL,
-        network: BoundNetwork,
+        network: NetTransport,
         rangeStart: Long,
         rangeEnd: Long?,
         timeoutMs: Int = 15_000
@@ -42,7 +41,7 @@ object ChunkFetcher {
             readTimeout = timeoutMs
             instanceFollowRedirects = true
             if (rangeStart > 0 || rangeEnd != null) {
-                val end = rangeEnd?.let { it.toString() } ?: ""
+                val end = rangeEnd?.toString() ?: ""
                 setRequestProperty("Range", "bytes=$rangeStart-$end")
             }
         }

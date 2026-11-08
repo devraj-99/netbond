@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import com.netmax.netbond.dl.NetTransport
 import java.net.HttpURLConnection
 import java.net.URL
 import javax.net.SocketFactory
@@ -21,11 +22,11 @@ import javax.net.SocketFactory
  */
 class BoundNetwork(
     val network: Network,
-    val id: String,
-    val label: String,
+    override val id: String,
+    override val label: String,
     val metered: Boolean
-) {
-    fun openConnection(url: URL): HttpURLConnection =
+) : NetTransport {
+    override fun openConnection(url: URL): HttpURLConnection =
         network.openConnection(url) as HttpURLConnection
 
     val socketFactory: SocketFactory

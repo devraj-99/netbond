@@ -19,6 +19,9 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
+      - name: Unit tests (engine logic + end-to-end download loop)
+        run: gradle --no-daemon testDebugUnitTest
+
       - name: Assemble debug APK
         run: gradle --no-daemon assembleDebug
 
