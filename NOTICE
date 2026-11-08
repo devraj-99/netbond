@@ -1,0 +1,16 @@
+NetBond
+=======
+
+NetBond's multi-connection download engine (block planning, work scheduling,
+hedged requests, splits and adaptive per-network concurrency, in the
+com.netmax.netbond.engine package) is a Kotlin port of the pure,
+I/O-free logic from Plexo:
+
+    Plexo - https://github.com/anmolkapil/plexo
+    Copyright (c) 2026 Anmol Kapil
+    License: MIT
+
+Plexo's desktop-only parts (Electron UI, OS socket binding, torrent/NZB
+support, browser extension) are not included. NetBond re-implements network
+binding for Android (android.net.Network per-socket binding) and adds its own
+UI, service layer and storage.
